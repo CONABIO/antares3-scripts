@@ -73,6 +73,8 @@ sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && antares p
 
 qsub -l h=$HOSTNAME -cwd -S /bin/bash shell_prepare_metadata.sh
 
+#just do a substitution to write the right path pointing to mapping of s3 to nfs:
+
 sed -n 's/s3:\/\/conabio-s3-oregon/\/shared_volume_s3/;p' metadata_mexico_s2_20m_s3_2018_bucket_2.yaml > metadata_mexico_s2_20m_s3_2018_bucket.yaml
 
 grep id: metadata_mexico_s2_20m_s3_2018_bucket.yaml|wc -l
@@ -109,7 +111,7 @@ sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && antares p
 
 qsub -l h=$HOSTNAME -cwd -S /bin/bash shell_prepare_metadata.sh
 
-#just do a substitution to write the right path:
+#just do a substitution to write the right path pointing to mapping of s3 to nfs:
 
 sed -n 's/s3:\/\/conabio-s3-oregon/\/shared_volume_s3/;p' metadata_mexico_s2_10m_s3_2018_bucket_2.yaml > metadata_mexico_s2_10m_s3_2018_bucket.yaml
 
