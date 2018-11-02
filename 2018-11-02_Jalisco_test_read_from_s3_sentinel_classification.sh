@@ -1,4 +1,4 @@
-###for ingestion we need to map s3 to a nfs using gateway and file-share services of AWS:
+###for ingestion of sentinel2 data we need to map s3 to a nfs using gateway and file-share services of AWS:
 
 #Using next autoscaling group already created in AWS we can ingest sentinel data to datacube
 
