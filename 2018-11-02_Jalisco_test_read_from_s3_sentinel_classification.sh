@@ -89,7 +89,7 @@ datacube -v product add ~/.config/madmex/indexing/s2_l2a_20m_granule.yaml
 
 datacube -v dataset add /shared_volume/tasks/2018/mapa_base_2018_s2/metadata_mexico_s2_20m_s3_2018_bucket.yaml
 
-ingest_datacube.sh
+#ingest_datacube.sh
 
 #!/bin/bash
 
@@ -100,7 +100,7 @@ sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && datacube 
 qsub -l h=$HOSTNAME -cwd -S /bin/bash ingest_datacube.sh
 
 
-#ingest los datos de 10m:
+#ingest 10m data:
 
 #In scheduler container:
 
@@ -125,7 +125,7 @@ datacube -v product add ~/.config/madmex/indexing/s2_l2a_10m_scl_granule.yaml
 
 datacube -v dataset add /shared_volume/tasks/2018/mapa_base_2018_s2/metadata_mexico_s2_10m_s3_2018_bucket.yaml
 
-ingest_datacube_10m.sh
+#ingest_datacube_10m.sh
 
 #!/bin/bash
 
@@ -181,6 +181,8 @@ antares apply_recipe -recipe s2_10m_scl_ndvi_mean_001 -b 2018-01-01 -e 2018-12-3
 
 antares apply_recipe -recipe s2_20m_s3_001 -b 2018-01-01 -e 2018-12-31 -lat 14 32.91 -long -117.68 -85.73 --name s2_20m_scl_mexico_s3_recipe_2018 -sc /shared_volume/scheduler.json
 
+
+#next antares commands for Jalisco 2018 (test)
 
 ##################segmentation (2gb scheduler, 14gb workers, r4.xlarge, 10 nodes, 19 dask-workers) 
 
