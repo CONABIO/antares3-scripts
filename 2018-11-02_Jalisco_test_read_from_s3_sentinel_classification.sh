@@ -162,7 +162,7 @@ datacube -v product add ~/.config/madmex/indexing/srtm_cgiar.yaml
 datacube -v dataset add /shared_volume/tasks/2018/mapa_base_2018_s2/metadata_srtm_bucket.yaml
 
 
-ingest_datacube_srtm_cgiar.sh
+#ingest_datacube_srtm_cgiar.sh
 
 #!/bin/bash
 
