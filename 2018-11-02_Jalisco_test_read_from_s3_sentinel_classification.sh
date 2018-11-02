@@ -95,7 +95,7 @@ datacube -v dataset add /shared_volume/tasks/2018/mapa_base_2018_s2/metadata_mex
 
 sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && datacube -v ingest -c ~/.config/madmex/ingestion/s2_l2a_20m_s3_mexico.yaml --executor distributed 172.17.0.2:8786"
 
-#before launching next command modify entry 'bucket' in ~/.config/madmex/ingestion/s2_l2a_20m_s3_mexico.yaml :
+#before launching next command modify entry 'bucket' for datacube-s2-20m-resampled-mexico-s3 in ~/.config/madmex/ingestion/s2_l2a_20m_s3_mexico.yaml :
 
 qsub -l h=$HOSTNAME -cwd -S /bin/bash ingest_datacube.sh
 
@@ -131,7 +131,7 @@ datacube -v dataset add /shared_volume/tasks/2018/mapa_base_2018_s2/metadata_mex
 
 sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && datacube -v ingest -c ~/.config/madmex/ingestion/s2_l2a_10m_scl_s3_mexico.yaml --executor distributed 172.17.0.2:8786"
 
-#before launching next command modify entry 'bucket' in ~/.config/madmex/ingestion/s2_l2a_10m_scl_s3_mexico.yaml:
+#before launching next command modify entry 'bucket' datacube-s2-10m-mexico-s3 in ~/.config/madmex/ingestion/s2_l2a_10m_scl_s3_mexico.yaml:
 
 
 qsub -l h=$HOSTNAME -cwd -S /bin/bash ingest_datacube_10m.sh
@@ -161,6 +161,8 @@ ingest_datacube_srtm_cgiar.sh
 #!/bin/bash
 
 sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && datacube -v ingest -c ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml --executor distributed 172.17.0.2:8786"
+
+#before launching next command modify entry 'bucket' datacube-srtm-mexico-s3 in ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml:
 
 
 qsub -l h=$HOSTNAME -cwd -S /bin/bash ingest_datacube_srtm_cgiar.sh
