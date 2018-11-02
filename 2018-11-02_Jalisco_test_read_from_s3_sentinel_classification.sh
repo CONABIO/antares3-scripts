@@ -1,4 +1,6 @@
-###for ingestion:
+###for ingestion we need to map s3 to a nfs using gateway and file-share services of AWS:
+
+#Using next autoscaling group already created in AWS we can ingest sentinel data to datacube
 
 #m4.4xlarge-sge-ingest-on-datacube-asgp-2
 
@@ -40,7 +42,6 @@ bash $mount_point/create-dask-sge-queue.sh $queue_name $slots
 
 #for node:
 
-
 #!/bin/bash
 user=ubuntu
 source /home/$user/.profile
@@ -56,7 +57,7 @@ sudo docker run -p 8787:8787 --name antares3-scheduler -e GDAL_DATA=/usr/share/g
 
 cd /shared_volume/tasks/2018/mapa_base_2018_s2/
 
-#deploy multiple workers:
+#deploy multiple workers (13 in this case):
 
 qsub -t 1-13 -cwd -S /bin/bash launch_antares3_workers.sh
 
@@ -77,6 +78,7 @@ qsub -l h=$HOSTNAME -cwd -S /bin/bash shell_prepare_metadata.sh
 
 sed -n 's/s3:\/\/conabio-s3-oregon/\/shared_volume_s3/;p' metadata_mexico_s2_20m_s3_2018_bucket_2.yaml > metadata_mexico_s2_20m_s3_2018_bucket.yaml
 
+#count how many datasets are going to be ingested
 grep id: metadata_mexico_s2_20m_s3_2018_bucket.yaml|wc -l
 
 sudo docker exec -it antares3-scheduler bash
@@ -115,7 +117,9 @@ qsub -l h=$HOSTNAME -cwd -S /bin/bash shell_prepare_metadata.sh
 
 sed -n 's/s3:\/\/conabio-s3-oregon/\/shared_volume_s3/;p' metadata_mexico_s2_10m_s3_2018_bucket_2.yaml > metadata_mexico_s2_10m_s3_2018_bucket.yaml
 
-#grep id: metadata_mexico_s2_10m_s3_2018_bucket.yaml|wc -l
+#count how many datasets are going to be ingested
+
+grep id: metadata_mexico_s2_10m_s3_2018_bucket.yaml|wc -l
 
 datacube -v product add ~/.config/madmex/indexing/s2_l2a_10m_scl_granule.yaml
 
@@ -133,7 +137,7 @@ sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && datacube 
 qsub -l h=$HOSTNAME -cwd -S /bin/bash ingest_datacube_10m.sh
 
 
-#srtm
+#ingest srtm
 
 
 #shell_prepare_metadata_srtm.sh
