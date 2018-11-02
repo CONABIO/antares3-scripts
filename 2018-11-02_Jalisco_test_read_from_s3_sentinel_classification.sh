@@ -59,8 +59,10 @@ cd /shared_volume/tasks/2018/mapa_base_2018_s2/
 
 #deploy multiple workers (13 in this case):
 
+#on host
 qsub -t 1-13 -cwd -S /bin/bash launch_antares3_workers.sh
 
+#enter to antares3-scheduler container to execute datacube commands
 sudo docker exec -it antares3-scheduler bash
 
 datacube -v system init --no-init-users
@@ -72,6 +74,7 @@ datacube -v system init --no-init-users
 #!/bin/bash
 sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && antares prepare_metadata --path MEX_S2_preprocessed/2018 --bucket conabio-s3-oregon --dataset_name s2_l2a_20m --outfile /shared_volume/tasks/2018/mapa_base_2018_s2/metadata_mexico_s2_20m_s3_2018_bucket_2.yaml --multi 13"
 
+#on host:
 qsub -l h=$HOSTNAME -cwd -S /bin/bash shell_prepare_metadata.sh
 
 #just do a substitution to write the right path pointing to mapping of s3 to nfs:
@@ -81,9 +84,7 @@ sed -n 's/s3:\/\/conabio-s3-oregon/\/shared_volume_s3/;p' metadata_mexico_s2_20m
 #count how many datasets are going to be ingested
 grep id: metadata_mexico_s2_20m_s3_2018_bucket.yaml|wc -l
 
-sudo docker exec -it antares3-scheduler bash
-
-antares init
+#enter to antares3-scheduler container to execute datacube commands
 
 datacube -v product add ~/.config/madmex/indexing/s2_l2a_20m_granule.yaml
 
@@ -97,19 +98,20 @@ sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && datacube 
 
 #before launching next command modify entry 'bucket' for datacube-s2-20m-resampled-mexico-s3 in ~/.config/madmex/ingestion/s2_l2a_20m_s3_mexico.yaml :
 
+#on host:
+
 qsub -l h=$HOSTNAME -cwd -S /bin/bash ingest_datacube.sh
 
 
 #ingest 10m data:
 
-#In scheduler container:
-
-#modify: /shared_volume/tasks/2018/mapa_base_2018_s2/shell_prepare_metadata_10m.sh according to path
 
 #shell_prepare_metadata_10m.sh
 
 #!/bin/bash
 sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && antares prepare_metadata --path MEX_S2_preprocessed/2018 --bucket conabio-s3-oregon --dataset_name s2_l2a_10m_scl --outfile /shared_volume/tasks/2018/mapa_base_2018_s2/metadata_mexico_s2_10m_s3_2018_bucket_2.yaml --multi 13
+
+#on host:
 
 qsub -l h=$HOSTNAME -cwd -S /bin/bash shell_prepare_metadata.sh
 
@@ -120,6 +122,8 @@ sed -n 's/s3:\/\/conabio-s3-oregon/\/shared_volume_s3/;p' metadata_mexico_s2_10m
 #count how many datasets are going to be ingested
 
 grep id: metadata_mexico_s2_10m_s3_2018_bucket.yaml|wc -l
+
+#enter to antares3-scheduler container to execute datacube commands
 
 datacube -v product add ~/.config/madmex/indexing/s2_l2a_10m_scl_granule.yaml
 
@@ -133,6 +137,7 @@ sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && datacube 
 
 #before launching next command modify entry 'bucket' datacube-s2-10m-mexico-s3 in ~/.config/madmex/ingestion/s2_l2a_10m_scl_s3_mexico.yaml:
 
+#on host:
 
 qsub -l h=$HOSTNAME -cwd -S /bin/bash ingest_datacube_10m.sh
 
@@ -145,16 +150,17 @@ qsub -l h=$HOSTNAME -cwd -S /bin/bash ingest_datacube_10m.sh
 #!/bin/bash
 sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && antares prepare_metadata --path dem/srtm_90 --bucket conabio-s3-oregon --dataset_name srtm_cgiar --outfile /shared_volume/tasks/2018/mapa_base_2018_s2/metadata_srtm_bucket.yaml -sc /shared_volume/scheduler.json
 
+#on host:
+
 qsub -l h=$HOSTNAME -cwd -S /bin/bash shell_prepare_metadata_srtm.sh
+
+##enter to antares3-scheduler container to execute datacube commands
 
 datacube -v product add ~/.config/madmex/indexing/srtm_cgiar.yaml
 
-#Added "srtm_cgiar_mosaic"
 
 datacube -v dataset add /shared_volume/tasks/2018/mapa_base_2018_s2/metadata_srtm_bucket.yaml
 
-
-#on host:
 
 ingest_datacube_srtm_cgiar.sh
 
@@ -164,6 +170,7 @@ sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && datacube 
 
 #before launching next command modify entry 'bucket' datacube-srtm-mexico-s3 in ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml:
 
+#on host:
 
 qsub -l h=$HOSTNAME -cwd -S /bin/bash ingest_datacube_srtm_cgiar.sh
 
