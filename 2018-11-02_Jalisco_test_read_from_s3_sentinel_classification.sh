@@ -167,6 +167,9 @@ sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && datacube 
 
 qsub -l h=$HOSTNAME -cwd -S /bin/bash ingest_datacube_srtm_cgiar.sh
 
+
+#On kubernetes cluster (deployment)
+
 ##############apply recipe:
 
 #10m:
