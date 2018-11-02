@@ -190,8 +190,7 @@ antares model_fit -model rf -p s2_20m_scl_mexico_s3_recipe_2018 -t jalisco_bits 
 antares model_predict_object -p s2_20m_scl_mexico_s3_recipe_2018 -m rf_s2_jalisco_test_20m_2018 -s s2_10m_Jalisco_test_seg_2018 -r Jalisco --name land_cover_rf_jalisco_test_s2_10m_2018 -sc /shared_volume/scheduler.json
 
 
-################### #db to raster:(29 gb for scheduler-r4.xlarge, the amount of ram is not clear if its 29,
-tests for 16 gb didn't work, no workers)
+################### #db to raster:(29 gb for scheduler-r4.xlarge, the amount of ram is not clear if its 29,tests for 16 gb didn't work, no workers)
 
 mkdir -p /shared_volume/tasks/2018/landcover/
 
