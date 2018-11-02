@@ -20,7 +20,7 @@ mkdir $mount_point_2
 ##Name of the queue that will be used by dask-scheduler and dask-workers
 queue_name=dask-queue.q
 ##Change number of slots to use for every instance, in this example the instances have 2 slots each of them
-slots=8
+slots=1
 region=$region
 type_value=$type_value
 ##Mount shared volume
