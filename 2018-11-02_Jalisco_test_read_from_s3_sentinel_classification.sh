@@ -113,7 +113,7 @@ sudo docker exec antares3-scheduler /bin/bash -c "source ~/.profile && antares p
 
 #on host:
 
-qsub -l h=$HOSTNAME -cwd -S /bin/bash shell_prepare_metadata.sh
+qsub -l h=$HOSTNAME -cwd -S /bin/bash shell_prepare_metadata_10m.sh
 
 #just do a substitution to write the right path pointing to mapping of s3 to nfs:
 
