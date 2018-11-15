@@ -4,13 +4,13 @@
 
 #modify IAM service to read and write to this bucket
 
-2)create a test DB, for example: test_from_s3_to_s3_2
+2) Start k8s-cluster according to requirements of Ingestion process (first step of land cover steps)
+
+3) In scheduler create a test DB, for example: test_from_s3_to_s3_2
 
 createdb -h <host of DB> -U <user of DB> <name of test DB>
 
 #will prompt for password
-
-3)Start k8s-cluster according to requirements of Ingestion process (first step of land cover steps)
 
 4)In scheduler modify entry db_database in ~/.datacube.conf according to name of DB that was created (test_from_s3_to_s3_2)
 
