@@ -38,7 +38,7 @@ datacube -v dataset add /shared_volume/tasks/2018/searching_error_in_s3_datacube
 
 cat /shared_volume/scheduler.json
 
-#also make sure that file ~/.config/madmex/ingestion/s2_l2a_20m_s3_mexico.yaml has in entry bucket the name: test-read-write-jalisco-s2-2018-2
+#also make sure that file ~/.config/madmex/ingestion/s2_l2a_20m_s3_mexico.yaml has in entry 'bucket' the name: test-read-write-jalisco-s2-2018-2
 
 datacube -v ingest --queue-size 10000 -c ~/.config/madmex/ingestion/s2_l2a_20m_s3_mexico.yaml --executor distributed <ip_of_scheduler>:8786
 
@@ -60,7 +60,7 @@ datacube -v dataset add /shared_volume/tasks/2018/searching_error_in_s3_datacube
 
 cat /shared_volume/scheduler.json
 
-#also make sure that file ~/.config/madmex/ingestion/s2_l2a_10m_scl_s3_mexico.yaml has in entry bucket the name: test-read-write-jalisco-s2-2018-2
+#also make sure that file ~/.config/madmex/ingestion/s2_l2a_10m_scl_s3_mexico.yaml has in entry 'bucket' the name: test-read-write-jalisco-s2-2018-2
 
 datacube -v ingest --queue-size 10000 -c ~/.config/madmex/ingestion/s2_l2a_10m_scl_s3_mexico.yaml --executor distributed <ip_of_scheduler>:8786
 
@@ -76,17 +76,40 @@ datacube -v dataset add /shared_volume/tasks/2018/searching_error_in_s3_datacube
 
 cat /shared_volume/scheduler.json
 
-#also make sure that file ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml has in entry bucket the name: test-read-write-jalisco-s2-2018-2
+#also make sure that file ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml has in entry 'bucket' the name: test-read-write-jalisco-s2-2018-2
 
 datacube -v ingest -c ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml --executor distributed <ip_of_scheduler>:8786 
 
 4)Apply recipe of 20m product
 
+#first run: 30 dask worker each 115 gb in 30 instances r4.4xlarge, and scheduler 3 gb 
+#second run: scheduler of 6gb and 1 dask worker of 230 gb in 1 r4.8xlarge instance
+
+antares apply_recipe -recipe s2_20m_s3_001 -b 2018-01-01 -e 2018-12-31 -region Jalisco --name s2_20m_scl_Jalisco_from_s3_to_s3_2_recipe_2018 -sc /shared_volume/scheduler.json
+
+
 5)Apply recipe of 10m product
+
+#first run: scheduler of 1gb and 119gb for dask-workers, 20 dask-workers in 20 r4.4xlarge instances
+#second run: scheduler of 3gb and 235gb for 1 dask-worker in 1 r4.8xlarge instance
+
+antares apply_recipe -recipe s2_10m_scl_ndvi_mean_001 -b 2018-01-01 -e 2018-12-31 -region Jalisco --name s2_10m_scl_Jalisco_from_s3_to_s3_2_recipe_2018 -sc /shared_volume/scheduler.json
 
 6)Model fit to result of recipe of 20m product
 
+#18gb scheduler, 6gb workers, r4.xlarge, 20 nodes, 35 dask-workers (could be 40 dask-workers)
+
+antares model_fit -model rf -p s2_20m_scl_Jalisco_from_s3_to_s3_2_recipe_2018 -t <name of training data> --region Jalisco --sample <percentage of sample> --remove-outliers --name rf_s2_jalisco_from_s3_to_s3_2_20m_2018 -extra n_estimators=60 -sc /shared_volume/scheduler.json
+
 7)Segmentation to result of recipe of 10m product
+
+#2gb scheduler, 13gb workers, r4.xlarge, 20 nodes, 35 dask-workers (could be 40 dask-workers)
+
+#before next command register how much free storage DB has
+
+antares segment --algorithm bis -n s2_10m_Jalisco_seg_from_s3_to_s3_2_2018 -p s2_10m_scl_Jalisco_from_s3_to_s3_2_recipe_2018 -r Jalisco -b ndvi_mean --datasource sentinel_2 --year 2018 -extra t=40 s=0.5 c=0.7 -sc /shared_volume/scheduler.json
+
+#after segment register how much free storage DB has
 
 8)Predict of result of segmentation of 10m product
 
