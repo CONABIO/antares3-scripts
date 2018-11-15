@@ -105,12 +105,21 @@ antares model_fit -model rf -p s2_20m_scl_Jalisco_from_s3_to_s3_2_recipe_2018 -t
 
 #2gb scheduler, 13gb workers, r4.xlarge, 20 nodes, 35 dask-workers (could be 40 dask-workers)
 
-#before next command register how much free storage DB has
+#before next command check how much free storage DB has
 
 antares segment --algorithm bis -n s2_10m_Jalisco_seg_from_s3_to_s3_2_2018 -p s2_10m_scl_Jalisco_from_s3_to_s3_2_recipe_2018 -r Jalisco -b ndvi_mean --datasource sentinel_2 --year 2018 -extra t=40 s=0.5 c=0.7 -sc /shared_volume/scheduler.json
 
-#after segment register how much free storage DB has
+#after segment check how much free storage DB has
 
 8)Predict of result of segmentation of 10m product
 
+#2gb scheduler, 14gb workers, r4.xlarge, 20 nodes, 35 dask-workers (could be 40 dask-workers)
+
+antares model_predict_object -p s2_20m_scl_Jalisco_from_s3_to_s3_2_recipe_2018 -m rf_s2_jalisco_from_s3_to_s3_2_20m_2018 -s s2_10m_Jalisco_seg_from_s3_to_s3_2_2018 -r Jalisco --name land_cover_rf_jalisco_from_s3_to_s3_2_s2_10m_2018 -sc /shared_volume/scheduler.json
+
 9)Convert to raster result of 8)
+
+#29gb for scheduler no dask workers
+
+antares db_to_raster -n land_cover_rf_jalisco_from_s3_to_s3_2_s2_10m_2018 -region Jalisco -f land_cover_rf_jalisco_from_s3_to_s3_2_s2_10m_2018.tif --resolution 10 -p '+proj=lcc +lat_1=17.5 +lat_2=29.5 +lat_0=12 +lon_0=-102 +x_0=2500000 +y_0=0 +a=6378137 +b=6378136.027241431 +units=m +no_defs'
+
