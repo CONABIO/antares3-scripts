@@ -83,3 +83,11 @@ datacube -v ingest -c ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml --execut
 4)Apply recipe of 20m product
 
 5)Apply recipe of 10m product
+
+6)Model fit to result of recipe of 20m product
+
+7)Segmentation to result of recipe of 10m product
+
+8)Predict of result of segmentation of 10m product
+
+9)Convert to raster result of 8)
