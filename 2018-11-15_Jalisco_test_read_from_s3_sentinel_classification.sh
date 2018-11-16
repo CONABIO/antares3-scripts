@@ -44,7 +44,7 @@ datacube -v ingest --queue-size 10000 -c ~/.config/madmex/ingestion/s2_l2a_20m_s
 
 2)Ingestion of 10m product
 
-#use for example:6gb for scheduler, 14 gb each dask-worker, 50 m4.xlarge instances
+#use for example: 6gb for scheduler, 7gb per worker, 50 instances: m4.xlarge, 93 dask-workers
 
 antares prepare_metadata --path test_jalisco_2018_sentinel2 --bucket conabio-s3-oregon --dataset_name s2_l2a_10m_scl --outfile /shared_volume/tasks/2018/searching_error_in_s3_datacube/from_s3_to_s3_2/<some_name_10m.yaml> -sc /shared_volume/scheduler.json 
 
