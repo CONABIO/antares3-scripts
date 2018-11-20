@@ -119,7 +119,7 @@ antares model_predict_object -p s2_20m_scl_Jalisco_from_s3_to_s3_2_recipe_2018 -
 
 9)Convert to raster result of 8)
 
-#29gb for scheduler no dask workers
+#29gb for scheduler no dask workers in a r4.xlarge instance (node)
 
 antares db_to_raster -n land_cover_rf_jalisco_from_s3_to_s3_2_s2_10m_2018 -region Jalisco -f land_cover_rf_jalisco_from_s3_to_s3_2_s2_10m_2018.tif --resolution 10 -p '+proj=lcc +lat_1=17.5 +lat_2=29.5 +lat_0=12 +lon_0=-102 +x_0=2500000 +y_0=0 +a=6378137 +b=6378136.027241431 +units=m +no_defs'
 
