@@ -95,7 +95,7 @@ antares apply_recipe -recipe s2_20m_s3_001 -b 2018-01-01 -e 2018-12-31 -region J
 
 antares apply_recipe -recipe s2_10m_scl_ndvi_mean_001 -b 2018-01-01 -e 2018-12-31 -region Jalisco --name s2_10m_scl_Jalisco_from_s3_to_s3_2_recipe_2018 -sc /shared_volume/scheduler.json
 
-6)Model fit to result of recipe of 20m product
+6)Model fit to result of recipe of 20m product (data resampled to 10m in datacube ingest cmd line)
 
 #18gb scheduler, 6gb workers, r4.xlarge, 20 nodes, 35 dask-workers (could be 40 dask-workers)
 
