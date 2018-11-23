@@ -127,5 +127,5 @@ antares db_to_raster -n land_cover_rf_jalisco_from_s3_to_s3_2_s2_10m_2018 -regio
 
 #not sure how much ram... possibly 29gb in a scheduler of a r4.xlarge instance
 
-antares validate -c land_cover_rf_jalisco_from_s3_to_s3_2_s2_10m_2018 -val bits_interpret -r Jalisco --comment 'validation for Jalisco s2 10m 2018 using bits_interpret and reading from s3 input images' --log
+antares validate -c land_cover_rf_jalisco_from_s3_to_s3_2_s2_10m_2018 -val bits_interpret -r Jalisco --comment 'validation for Jalisco s2 10m 2018 using bits_interpret as validation data and reading from s3 input images' --log
 
