@@ -87,11 +87,13 @@ datacube -v ingest --queue-size 2000 -c ~/.config/madmex/ingestion/s1_snappy_vh_
 ### 50 instances r4.2xlarge, 50 workers 58GB, scheduler 2GB
 antares apply_recipe -recipe s1_2_10m_001 -b 2018-01-01 -e 2018-12-31 -region Jalisco --name s1_<some_name>_s3_to_s3_recipe_2018 -sc /shared_volume/scheduler.json
 
+5b) If s2 20m data wasn't resampled to 10m when was ingested then use:
+
 #first run: 30 dask worker each 115 gb in 30 instances r4.4xlarge, and scheduler 3 gb 
 #second run: scheduler of 6gb and 1 dask worker of 230 gb in 1 r4.8xlarge instance
 antares apply_recipe -recipe s1_2_20m_resampled_10m_001 -b 2018-01-01 -e 2018-12-31 -region Jalisco --name s1_2_20m_resampled_10m_001_Jalisco_from_s3_to_s3_recipe_2018 --resolution -10 10 --tilesize 50020 50020 --origin 2426720 977160 --proj4 '+proj=lcc +lat_1=17.5 +lat_2=29.5 +lat_0=12 +lon_0=-102 +x_0=2500000 +y_0=0 +a=6378137 +b=6378136.027241431 +units=m +no_defs' -sc /shared_volume/scheduler.json
 
-5b) If s2 20m data wasn't resampled to 10m when was ingested then use:
+
 
 6) Apply recipe of 10m product
 
