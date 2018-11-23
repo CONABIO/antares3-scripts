@@ -103,7 +103,7 @@ antares apply_recipe -recipe s1_2_20m_resampled_10m_001 -b 2018-01-01 -e 2018-12
 antares apply_recipe -recipe s2_10m_scl_ndvi_mean_001 -b 2018-01-01 -e 2018-12-31 -region Jalisco --name s2_10m_scl_Jalisco_from_s3_to_s3_2_recipe_2018 -sc /shared_volume/scheduler.json
 
 
-7) Segmentation to result of recipe s1_<some_name>_s3_to_s3_recipe_2018
+7) Segmentation to result of recipe of 10m product
 
 #2gb scheduler, 13gb workers, r4.xlarge, 20 nodes, 35 dask-workers (could be 40 dask-workers)
 
