@@ -125,7 +125,14 @@ antares model_fit -model rf -p s1_2_20m_resampled_10m_001_Jalisco_from_s3_to_s3_
 #2gb scheduler, 14gb workers, r4.xlarge, 20 nodes, 35 dask-workers (could be 40 dask-workers)
 antares model_predict_object -p s1_2_20m_resampled_10m_001_Jalisco_from_s3_to_s3_recipe_2018 -m rf_s1_2_20m_resampled_10m_001_jalisco_from_s3_to_s3_2018 -s s2_10m_Jalisco_seg_from_s3_to_s3_2_2018 -r Jalisco --name land_cover_rf_s1_2_20m_resampled_10m_001_jalisco_from_s3_to_s3_2018 -sc /shared_volume/scheduler.json
 
-# Convert to raster
+10)Convert to raster
 
-TODO
+antares db_to_raster -n land_cover_rf_s1_2_20m_resampled_10m_001_jalisco_from_s3_to_s3_2018 -region Jalisco -f land_cover_rf_s1_2_20m_resampled_10m_001_jalisco_from_s3_to_s3_2018.tif --resolution 10 -p '+proj=lcc +lat_1=17.5 +lat_2=29.5 +lat_0=12 +lon_0=-102 +x_0=2500000 +y_0=0 +a=6378137 +b=6378136.027241431 +units=m +no_defs'
+
+11) Validation (only if validation set and training set have same scheme of classification) 
+
+#not sure how much ram... possibly 29gb in a scheduler of a r4.xlarge instance
+
+antares validate -c land_cover_rf_s1_2_20m_resampled_10m_001_jalisco_from_s3_to_s3_2018 -val bits_interpret -r Jalisco --comment 'validation for Jalisco s2 10m 2018 using gridspec functionality of datacube, bits_interpret as validation data and reading from s3 input images' --log
+
 
