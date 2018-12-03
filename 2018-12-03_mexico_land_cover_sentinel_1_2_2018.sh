@@ -3,14 +3,17 @@
 #srtm:
 datacube-srtm-mexico-s3
 
-#s2 bands 20m resampled to 10m:
+#s2 20m data resampled to 10m:
 datacube-s2-20m-resampled-mexico-s3
 
-#s2 bands 20m:
+#s2 20m data:
 datacube-s2-20m-mexico-s3
 
-#s2 bands 10m:
+#s2 10m data:
 datacube-s2-10m-mexico-s3
+
+#s1 data:
+datacube-s1-mexico-s3
 
 #database: antares_datacube
 
