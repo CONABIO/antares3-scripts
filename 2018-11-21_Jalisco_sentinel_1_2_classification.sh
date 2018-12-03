@@ -18,9 +18,16 @@ datacube -v dataset add /shared_volume/tasks/2018/searching_error_in_s3_datacube
 
 cat /shared_volume/scheduler.json
 
-#also make sure that file ~/.config/madmex/ingestion/s2_l2a_20m_s3_mexico.yaml has in entry 'bucket' the name: test-read-write-jalisco-s2-2018-2
+#two options:
 
+#1) also make sure that file ~/.config/madmex/ingestion/s2_l2a_20m_mexico.yaml has in entry 'bucket' the name: test-read-write-jalisco-s2-2018-2
+#next line for no resampling to 10m when ingesting:
 datacube -v ingest --queue-size 10000 -c ~/.config/madmex/ingestion/s2_l2a_20m_mexico.yaml --executor distributed <ip_of_scheduler>:8786
+
+#2) also make sure that file ~/.config/madmex/ingestion/s2_l2a_20m_s3_mexico.yaml has in entry 'bucket' the name: test-read-write-jalisco-s2-2018-2
+#next line for no resampling to 10m when ingesting:
+datacube -v ingest --queue-size 10000 -c ~/.config/madmex/ingestion/s2_l2a_20m_s3_mexico.yaml --executor distributed <ip_of_scheduler>:8786
+
 
 2)Ingestion of 10m product
 
