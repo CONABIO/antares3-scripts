@@ -41,7 +41,7 @@ grep id: /shared_volume/tasks/2018/searching_error_in_s3_datacube/from_s3_to_s3_
 
 datacube -v product add ~/.config/madmex/indexing/s2_l2a_10m_scl_granule.yaml
 
-datacube -v dataset add /shared_volume/tasks/2018/searching_error_in_s3_datacube/from_s3_to_s3_2/metadata_from_s3_to_s3_10m.yaml
+datacube -v dataset add /shared_volume/tasks/2018/searching_error_in_s3_datacube/from_s3_to_s3_2/<some_name_10m.yaml>
 
 #before execution of next line check ip of scheduler doing a:
 
