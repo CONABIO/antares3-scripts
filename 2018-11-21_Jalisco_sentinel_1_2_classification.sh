@@ -25,7 +25,7 @@ cat /shared_volume/scheduler.json
 datacube -v ingest --queue-size 10000 -c ~/.config/madmex/ingestion/s2_l2a_20m_mexico.yaml --executor distributed <ip_of_scheduler>:8786
 
 #2) also make sure that file ~/.config/madmex/ingestion/s2_l2a_20m_s3_mexico.yaml has in entry 'bucket' the name: test-read-write-jalisco-s2-2018-2
-#next line for no resampling to 10m when ingesting:
+#next line for resampling to 10m when ingesting:
 datacube -v ingest --queue-size 10000 -c ~/.config/madmex/ingestion/s2_l2a_20m_s3_mexico.yaml --executor distributed <ip_of_scheduler>:8786
 
 
