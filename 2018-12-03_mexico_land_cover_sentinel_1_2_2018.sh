@@ -25,11 +25,11 @@ datacube-s1-mexico-s3
 
 #use for example: 6gb for scheduler, 7gb per worker, x instances: m4.xlarge, x dask-workers
 
-antares prepare_metadata --path MEX_S2_preprocessed/2018 --bucket conabio-s3-oregon --dataset_name s2_l2a_20m --outfile /shared_volume/tasks/2018/landcover_2018/<some_name_20m.yaml> -sc /shared_volume/scheduler.json 
+antares prepare_metadata --path MEX_S2_preprocessed/2018 --bucket conabio-s3-oregon --dataset_name s2_l2a_20m --outfile /shared_volume/tasks/2018/national_landcover/2018/<some_name_20m.yaml> -sc /shared_volume/scheduler.json 
 
 #count number of datasets that will be ingested:
 
-grep id: /shared_volume/tasks/2018/landcover_2018/<some_name.yaml>|wc -l
+grep id: /shared_volume/tasks/2018/national_landcover/2018/<some_name.yaml>|wc -l
 
 datacube -v product add ~/.config/madmex/indexing/s2_l2a_20m_granule.yaml
 
