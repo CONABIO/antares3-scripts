@@ -6,6 +6,9 @@ datacube-srtm-mexico-s3
 #s2 bands 20m resampled to 10m:
 datacube-s2-20m-resampled-mexico-s3
 
+#s2 bands 20m:
+datacube-s2-20m-mexico-s3
+
 #s2 bands 10m:
 datacube-s2-10m-mexico-s3
 
