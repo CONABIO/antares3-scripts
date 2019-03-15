@@ -14,6 +14,7 @@ datacube -v dataset add /shared_volume/metadata_landsat7_oax.yaml
 
 
 ######
+#use bucket test-landsat-l7
 datacube -v ingest --dry-run -c ~/.config/madmex/ingestion/ls7_espa_mexico.yaml --executor distributed 100.96.2.6:8786
 datacube -v ingest --queue-size 1000 -c ~/.config/madmex/ingestion/ls7_espa_mexico.yaml --executor distributed 100.96.2.6:8786
 
