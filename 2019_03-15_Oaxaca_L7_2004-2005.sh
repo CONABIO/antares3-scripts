@@ -35,7 +35,7 @@ antares apply_recipe -recipe landsat_madmex_002 -b 2004-01-01 -e 2005-12-31 -reg
 
 ######
 #4 instances r4.2xlarge, 19 workers 10GB, scheduler 3GB
-antares segment --algorithm bis -n oax_seg_0405 -p l7_oax_recipe_0405 -r Oaxaca -b ndvi_mean --datasource landsat --year 2005 -extra t=30 s=0.5 c=0.7 -sc /shared_volume/scheduler.json
+antares segment --algorithm bis -n oax_seg_0405 -p l7_oax_recipe_0405 -r Oaxaca -b ndvi_mean --datasource landsat7 --year 2005 -extra t=30 s=0.5 c=0.7 -sc /shared_volume/scheduler.json
 
 
 ######
