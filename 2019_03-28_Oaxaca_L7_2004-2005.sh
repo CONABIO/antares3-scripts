@@ -11,7 +11,7 @@ datacube -v product add ~/.config/madmex/indexing/ls7_espa_scenes.yaml
 
 datacube -v dataset add metadata_oax_no_gaps.yaml
 
-
+# before running ingest add the bucket name to the yaml file
 datacube -v ingest --queue-size 2000 -c ~/.config/madmex/ingestion/ls7_espa_mexico.yaml --executor distributed 100.96.24.4:8786
 
 #srtm:
