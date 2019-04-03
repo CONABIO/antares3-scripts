@@ -5,7 +5,7 @@
 
 # scheduler 4 gb, 16 workers with 5 gb each
 
-antares prepare_metadata --path linea_base/L7_NOGAPS --bucket conabio-s3-oregon --dataset_name landsat_espa --outfile metadata_oax_no_gaps.yaml -sc /shared_volume/scheduler.json
+antares prepare_metadata --path linea_base/L7_NOGAPS --bucket conabio-s3-oregon --dataset_name landsat_espa --outfile metadata_oax_no_gaps.yaml --pattern ".*LT050(22048|22049|23048|23049|24047|24048|24049|25047|25048|25049)(2004|2005).*" -sc /shared_volume/scheduler.json
 
 datacube -v product add ~/.config/madmex/indexing/ls7_espa_scenes.yaml
 
