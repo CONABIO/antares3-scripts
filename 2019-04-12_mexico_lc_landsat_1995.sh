@@ -23,7 +23,7 @@ datacube -v system init --no-init-users
 
 #? r4.xlarge instances
 
-# scheduler 4 gb, 16 workers with 5 gb each
+# scheduler 4 gb, ? workers with 5 gb each
 
 antares prepare_metadata --path linea_base/L5 --bucket conabio-s3-oregon --dataset_name landsat_espa --outfile metadata_mex_l5.yaml -sc /shared_volume/scheduler.json
 
