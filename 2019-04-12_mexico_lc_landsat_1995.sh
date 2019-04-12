@@ -40,7 +40,7 @@ datacube -v dataset add metadata_mex_l5.yaml
 #also check queue-size....and modify properly. Next line  will launch 2000 tasks (modify in order to 
 #launch more than 2000 tasks....and we can finish in reasonable hours of work)
 
-#save first 2000 tasks
+#save  tasks to ingest
 datacube -v ingest --save-tasks tasks_ingest_95.txt -c ~/.config/madmex/ingestion/ls5_espa_mexico.yaml
 
 #load tasks
