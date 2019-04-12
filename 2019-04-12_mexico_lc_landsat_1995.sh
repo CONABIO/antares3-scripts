@@ -41,10 +41,10 @@ datacube -v dataset add metadata_mex_l5.yaml
 #launch more than ? tasks....and we can finish in reasonable hours of work)
 
 #save  tasks to ingest
-datacube -v ingest --save-tasks tasks_ingest_95.txt -c ~/.config/madmex/ingestion/ls5_espa_mexico.yaml
+datacube -v ingest --save-tasks tasks_ingest_L5.txt -c ~/.config/madmex/ingestion/ls5_espa_mexico.yaml
 
 #load tasks
-datacube -v ingest --queue-size < > --load-tasks tasks_ingest_95.txt -c ~/.config/madmex/ingestion/ls5_espa_mexico.yaml --executor distributed <ip_scheduler>:8786
+datacube -v ingest --queue-size < > --load-tasks tasks_ingest_L5.txt -c ~/.config/madmex/ingestion/ls5_espa_mexico.yaml --executor distributed <ip_scheduler>:8786
 
 
 
