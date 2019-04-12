@@ -44,7 +44,7 @@ datacube -v dataset add metadata_mex_l5.yaml
 datacube -v ingest --save-tasks tasks_ingest_95.txt -c ~/.config/madmex/ingestion/ls5_espa_mexico.yaml
 
 #load tasks
-datacube -v ingest --queue-size 2000 --load-tasks first_2000.txt -c ~/.config/madmex/ingestion/ls5_espa_mexico.yaml --executor distributed <ip_scheduler>:8786
+datacube -v ingest --queue-size 2000 --load-tasks tasks_ingest_95.txt -c ~/.config/madmex/ingestion/ls5_espa_mexico.yaml --executor distributed <ip_scheduler>:8786
 
 
 
