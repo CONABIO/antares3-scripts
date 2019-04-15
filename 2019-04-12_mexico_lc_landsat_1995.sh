@@ -23,7 +23,7 @@ datacube -v system init --no-init-users
 
 #? r4.xlarge instances
 
-# scheduler 6 gb, ? workers with 5 gb each
+# scheduler 7 gb, ? workers with 5 gb each
 
 antares prepare_metadata --path linea_base/L5 --bucket conabio-s3-oregon --dataset_name landsat_espa --outfile metadata_mex_l5.yaml -sc /shared_volume/scheduler.json
 
@@ -35,10 +35,12 @@ datacube -v product add ~/.config/madmex/indexing/ls5_espa_scenes.yaml
 
 datacube -v dataset add metadata_mex_l5.yaml
 
-# before running ingest add the bucket name to the yaml file that will store ingestion results. Bucket: datacube-ls5-7-espa-mexico-s3
+# before running ingest add the bucket name to the yaml file that will store ingestion results. 
+#Bucket: datacube-ls5-7-espa-mexico-s3
 
 #also check queue-size....and modify properly. Next line  will launch ? tasks (modify in order to 
 #launch more than ? tasks....and we can finish in reasonable hours of work)
+#retrieve ip of scheduler by doing a cat /shared_volume/scheduler.json
 
 datacube -v ingest --queue-size < > -c ~/.config/madmex/ingestion/ls5_espa_mexico.yaml --executor distributed <ip_scheduler>:8786
 
