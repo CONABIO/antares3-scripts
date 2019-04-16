@@ -19,7 +19,7 @@ antares_datacube
 
 datacube -v system init --no-init-users
 
-#1)ingest:
+######################1)ingest:
 
 #17 r4.2xlarge instances
 
@@ -70,11 +70,15 @@ datacube -v dataset add metadata_srtm_bucket.yaml
 datacube -v ingest -c ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml --executor distributed <ip_scheduler>:8786
 
 
+######################(end) 1)ingest:
 
-#Recipe:
+
+######################2)recipe:
 
 #95 and 96 will be used
 
+
+######################(end)2)recipe:
 
 
 
