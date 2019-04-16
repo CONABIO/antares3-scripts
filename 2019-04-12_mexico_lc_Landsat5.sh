@@ -45,4 +45,37 @@ datacube -v dataset add metadata_mex_l5.yaml
 datacube -v ingest --queue-size < > -c ~/.config/madmex/ingestion/ls5_espa_mexico.yaml --executor distributed <ip_scheduler>:8786
 
 
+#MUST DO: After ingesting, change storage class of objects below conabio-s3-oregon/linea_base/L5 to 
+#"ONEZONE_IA" IA: infrequent access
+
+#Srtm ingestion:
+
+#scheduler 5 gb, ? workers with 5 gb each
+
+#create yaml in: /shared_volume/tasks/2019/mexico_landsat_lc
+
+antares prepare_metadata --path dem/srtm_90 --bucket conabio-s3-oregon --dataset_name srtm_cgiar --outfile metadata_srtm_bucket.yaml -sc /shared_volume/scheduler.json
+
+datacube -v product add ~/.config/madmex/indexing/srtm_cgiar.yaml
+
+
+datacube -v dataset add metadata_srtm_bucket.yaml
+
+
+#retrieve ip of scheduler by doing a cat /shared_volume/scheduler.json
+
+#modify entry bucket of yaml with: 
+#datacube-srtm-mexico-s3
+
+datacube -v ingest -c ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml --executor distributed <ip_scheduler>:8786
+
+
+
+#Recipe:
+
+#95 and 96 will be used
+
+
+
+
 
