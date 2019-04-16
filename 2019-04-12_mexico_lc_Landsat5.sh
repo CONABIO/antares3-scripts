@@ -70,7 +70,7 @@ datacube -v dataset add metadata_srtm_bucket.yaml
 datacube -v ingest -c ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml --executor distributed <ip_scheduler>:8786
 
 
-######################(end) 1)ingest:
+######################(end) 1)ingest
 
 
 ######################2)recipe:
@@ -82,8 +82,18 @@ datacube -v ingest -c ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml --execut
 
 antares apply_recipe -recipe landsat_madmex_003 -b 1995-01-01 -e 1996-12-31 -lat 14 33 -long -119 -84 --name ? -sc /shared_volume/scheduler.json
 
-######################(end)2)recipe:
+######################(end)2)recipe
 
 
+######################3)recipe:
 
+#modify .antares entries SEGMENTATION_BUCKET and TEMP_DIR for bucket and directory that will have temporary segmentation results
+#we are using: segmentation-antares3-results bucket
+#check if BIS license is functional 
+#directory that will have temporary segmentation results is recommended to be in /home/madmex_user instead of
+#/shared_volume/temp to avoid bottlenecks of I/O of every worker writing to a unique location. See:
+#https://github.com/CONABIO/antares3/blob/develop/madmex/util/s3.py#L176 then use TEMP_DIR=/home/madmex_user
 
+antares segment --algorithm bis -n <segmentation name> -p <recipe name> -lat 14 33 -long -119 -84 -b ndvi_mean --datasource landsat5 --year 1995-1996 -extra t=30 s=0.5 c=0.7 -sc /shared_volume/scheduler.json
+
+######################(end)3)segmentation
