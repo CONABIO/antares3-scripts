@@ -94,6 +94,8 @@ antares apply_recipe -recipe landsat_madmex_003 -b 1995-01-01 -e 1996-12-31 -lat
 #/shared_volume/temp to avoid bottlenecks of I/O of every worker writing to a unique location. See:
 #https://github.com/CONABIO/antares3/blob/develop/madmex/util/s3.py#L176 then use TEMP_DIR=/home/madmex_user
 
+#scheduler 4 gb and workers 12 gb each
+
 antares segment --algorithm bis -n <segmentation name> -p <recipe name> -lat 14 33 -long -119 -84 -b ndvi_mean --datasource landsat5 --year 1995_1996 -extra t=30 s=0.5 c=0.7 -sc /shared_volume/scheduler.json
 
 ######################(end)3)segmentation
