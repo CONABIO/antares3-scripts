@@ -76,7 +76,9 @@ datacube -v ingest -c ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml --execut
 ######################2)recipe:
 
 #95 and 96 will be used
+#will use lat long coordinates of bounding box for Mexico instead of region flag
 
+antares apply_recipe -recipe landsat_madmex_003 -b 1995-01-01 -e 1996-12-31 -lat 14 32.91 -long -117.68 -85.73 --name ? -sc /shared_volume/scheduler.json
 
 ######################(end)2)recipe:
 
