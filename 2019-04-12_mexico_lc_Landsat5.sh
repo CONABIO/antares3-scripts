@@ -85,7 +85,7 @@ antares apply_recipe -recipe landsat_madmex_003 -b 1995-01-01 -e 1996-12-31 -lat
 ######################(end)2)recipe
 
 
-######################3)recipe:
+######################3)segmentation:
 
 #modify .antares entries SEGMENTATION_BUCKET and TEMP_DIR for bucket and directory that will have temporary segmentation results
 #we are using: segmentation-antares3-results bucket
