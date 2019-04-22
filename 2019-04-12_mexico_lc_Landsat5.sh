@@ -100,3 +100,27 @@ antares apply_recipe -recipe landsat_madmex_003 -b 1995-01-01 -e 1996-12-31 -lat
 antares segment --algorithm bis -n <segmentation name> -p <recipe name> -lat 14 33 -long -119 -84 -b ndvi_mean --datasource landsat5 --year 1995_1996 -extra t=30 s=0.5 c=0.7 -sc /shared_volume/scheduler.json
 
 ######################(end)3)segmentation
+
+
+######################*)ingest training data
+
+#check next commmand with Ixchel
+antares ingest_training <shapefile> --scheme madmex_31 --year <year of training data> --name <name to identify in DB and in processes> --field <name of column of shapefile with classes>
+
+######################(end)*)ingest training data
+
+
+######################4)model fit:
+
+antares model_fit -model rf -p <name of recipe> -t <name of training data> --region <state of Mexico> --name <name of model> --sample <% of training data to be used> --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
+
+######################(end)4)model fit:
+
+######################*)ingest validation data
+
+***Pending***
+
+######################(end)*)ingest validation data
+
+
+
