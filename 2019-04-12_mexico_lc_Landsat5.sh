@@ -43,7 +43,7 @@ datacube -v dataset add metadata_mex_l5.yaml
 #launch more than ? tasks....and we can finish in reasonable hours of work)
 #retrieve ip of scheduler by doing a cat /shared_volume/scheduler.json
 
-datacube -v ingest --queue-size < > -c ~/.config/madmex/ingestion/ls5_espa_mexico.yaml --executor distributed <ip_scheduler>:8786
+datacube -v ingest --queue-size <size > -c ~/.config/madmex/ingestion/ls5_espa_mexico.yaml --executor distributed <ip_scheduler>:8786
 
 
 #MUST DO: After ingesting, change storage class of objects below conabio-s3-oregon/linea_base/L5 to 
@@ -120,7 +120,7 @@ Command execution is done in 1357.3208334445953 seconds.
 
 #for every state
 
-#6 r4.xlarge instances
+#3 r4.2xlarge instances
 #scheduler 4 gb, 12 workers with 10gb each
 
 antares model_fit -model rf -p recipe_mex_L5_9596 -t <name of training data> --region <state of Mexico> --name <name of model> --sample <% of training data to be used> --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
@@ -141,7 +141,21 @@ antares model_predict_object -p recipe_mex_L5_9596 -m model_rf_oaxaca_L5_9596 -s
 #example:
 antares model_predict_object -p recipe_mex_L5_9596 -m model_rf_oaxaca_L5_9596 -s seg_mex_L5_9596 -r Oaxaca --name predict_rf_oaxaca_L5_9596 -sc /shared_volume/scheduler.json
 
+Command execution is done in 375.819700717926 seconds.
 ######################4)model predict:
+
+
+######################5)db to raster:
+
+#scheduler 10 gb, 4 gb dask workers, 20 dask-workers
+antares db_to_raster -n <name of predict to identify it in DB>  -region <state of Mexico> -f <name of result> --resolution 30 -sc /shared_volume/scheduler.json
+
+
+#example:
+antares db_to_raster -n predict_rf_oaxaca_L5_9596 -region Oaxaca -f predict_rf_oaxaca_L5_9596.tif --resolution 30 -sc /shared_volume/scheduler.json
+
+######################(end)5)db to raster:
+
 
 ######################*)ingest validation data
 
