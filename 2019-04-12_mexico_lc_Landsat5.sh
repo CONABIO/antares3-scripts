@@ -98,7 +98,7 @@ antares apply_recipe -recipe landsat_madmex_003 -b 1995-01-01 -e 1996-12-31 -lat
 #scheduler 4 gb and workers 12 gb each
 
 antares segment --algorithm bis -n seg_mex_L5_9596 -p recipe_mex_L5_9596 -lat 14 33 -long -119 -84 -b ndvi_mean --datasource landsat5 --year 1995_1996 -extra t=30 s=0.5 c=0.7 -sc /shared_volume/scheduler.json
-
+Command execution is done in 4803.307151556015 seconds.
 ######################(end)3)segmentation
 
 
@@ -127,7 +127,6 @@ antares model_fit -model rf -p recipe_mex_L5_9596 -t <name of training data> --r
 
 #example:
 antares model_fit -model rf -p recipe_mex_L5_9596 -t bits_Oaxaca --region Oaxaca --name model_rf_oaxaca_L5_9596 --sample 1 --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
-
 Command execution is done in 158.65846228599548 seconds.
 ######################(end)4)model fit:
 
@@ -140,7 +139,6 @@ antares model_predict_object -p recipe_mex_L5_9596 -m model_rf_oaxaca_L5_9596 -s
 
 #example:
 antares model_predict_object -p recipe_mex_L5_9596 -m model_rf_oaxaca_L5_9596 -s seg_mex_L5_9596 -r Oaxaca --name predict_rf_oaxaca_L5_9596 -sc /shared_volume/scheduler.json
-
 Command execution is done in 375.819700717926 seconds.
 ######################4)model predict:
 
@@ -150,10 +148,9 @@ Command execution is done in 375.819700717926 seconds.
 #scheduler 10 gb, 4 gb dask workers, 20 dask-workers
 antares db_to_raster -n <name of predict to identify it in DB>  -region <state of Mexico> -f <name of result> --resolution 30 -sc /shared_volume/scheduler.json
 
-
 #example:
 antares db_to_raster -n predict_rf_oaxaca_L5_9596 -region Oaxaca -f predict_rf_oaxaca_L5_9596.tif --resolution 30 -sc /shared_volume/scheduler.json
-
+Command execution is done in 73.89225602149963 seconds.
 ######################(end)5)db to raster:
 
 
