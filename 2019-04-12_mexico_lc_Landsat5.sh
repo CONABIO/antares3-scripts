@@ -110,7 +110,7 @@ antares ingest_training_from_raster /path/to/file.tif --fraction 0.0001 --classe
 
 #example:
 antares ingest_training_from_raster Oaxaca_rapideye_2015_31.tif --fraction -1 --classes 31 --scheme madmex_31--year 2015 --name bits_Oaxaca --field class
-
+Command execution is done in 1357.3208334445953 seconds.
 ######################(end)*)ingest training data
 
 
@@ -126,11 +126,20 @@ antares model_fit -model rf -p recipe_mex_L5_9596 -t <name of training data> --r
 #example:
 antares model_fit -model rf -p recipe_mex_L5_9596 -t bits_Oaxaca --region Oaxaca --name model_rf_oaxaca_L5_9596 --sample 1 --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
 
+Command execution is done in 158.65846228599548 seconds.
 ######################(end)4)model fit:
 
 
+######################4)model predict:
+#for every state
 
+#scheduler 4gb, 4 gb each dask worker, 17 dask-workers
+antares model_predict_object -p recipe_mex_L5_9596 -m model_rf_oaxaca_L5_9596 -s seg_mex_L5_9596 -r <state of Mexico> --name <name of predict to identify it in DB> -sc /shared_volume/scheduler.json
 
+#example:
+antares model_predict_object -p recipe_mex_L5_9596 -m model_rf_oaxaca_L5_9596 -s seg_mex_L5_9596 -r Oaxaca --name predict_rf_oaxaca_L5_9596 -sc /shared_volume/scheduler.json
+
+######################4)model predict:
 
 ######################*)ingest validation data
 
