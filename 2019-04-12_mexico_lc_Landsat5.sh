@@ -7,7 +7,8 @@ datacube-ls5-7-espa-mexico-s3
 
 #database to use in both .antares and .datacube.conf 
 
-antares_datacube 
+antares_datacube #this was created with:
+#createdb -h <server db> -U <user> antares_datacube
 
 #on server: aurora
 
