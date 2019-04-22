@@ -105,8 +105,10 @@ antares segment --algorithm bis -n seg_mex_L5_9596 -p recipe_mex_L5_9596 -lat 14
 ######################*)ingest training data
 
 #for every state
+#r4.2xlarge instance
+#scheduler 58 gb
 
-antares ingest_training_from_raster /path/to/file.tif --fraction 0.0001 --classes 31 --scheme madmex_31 --year 2015 --name bits_<state_mexico> --field code
+antares ingest_training_from_raster /path/to/file.tif --fraction 0.0001 --classes 31 --scheme madmex_31 --year 2015 --name bits_<state_mexico> --field class
 
 #example:
 antares ingest_training_from_raster Oaxaca_rapideye_2015_31.tif --fraction -1 --classes 31 --scheme madmex_31--year 2015 --name bits_Oaxaca --field class
