@@ -81,7 +81,7 @@ datacube -v ingest -c ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml --execut
 
 #30 r4.2xlarge instances. Scheduler 10 gb and workers 57 gb
 
-antares apply_recipe -recipe landsat_madmex_003 -b 1995-01-01 -e 1996-12-31 -lat 14 33 -long -119 -84 --name ? -sc /shared_volume/scheduler.json
+antares apply_recipe -recipe landsat_madmex_003 -b 1995-01-01 -e 1996-12-31 -lat 14 33 -long -119 -84 --name recipe_mex_L5_9596 -sc /shared_volume/scheduler.json
 
 ######################(end)2)recipe
 
@@ -97,7 +97,7 @@ antares apply_recipe -recipe landsat_madmex_003 -b 1995-01-01 -e 1996-12-31 -lat
 
 #scheduler 4 gb and workers 12 gb each
 
-antares segment --algorithm bis -n <segmentation name> -p <recipe name> -lat 14 33 -long -119 -84 -b ndvi_mean --datasource landsat5 --year 1995_1996 -extra t=30 s=0.5 c=0.7 -sc /shared_volume/scheduler.json
+antares segment --algorithm bis -n seg_mex_L5_9596 -p recipe_mex_L5_9596 -lat 14 33 -long -119 -84 -b ndvi_mean --datasource landsat5 --year 1995_1996 -extra t=30 s=0.5 c=0.7 -sc /shared_volume/scheduler.json
 
 ######################(end)3)segmentation
 
@@ -116,7 +116,7 @@ antares ingest_training_from_raster /path/to/file.tif --fraction 0.0001 --classe
 #6 r4.xlarge instances
 #scheduler 4 gb, 12 workers with 10gb each
 
-antares model_fit -model rf -p <name of recipe> -t <name of training data> --region <state of Mexico> --name <name of model> --sample <% of training data to be used> --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
+antares model_fit -model rf -p recipe_mex_L5_9596 -t <name of training data> --region <state of Mexico> --name <name of model> --sample <% of training data to be used> --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
 
 ######################(end)4)model fit:
 
