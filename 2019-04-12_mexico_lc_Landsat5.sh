@@ -113,6 +113,9 @@ antares ingest_training_from_raster /path/to/file.tif --fraction 0.0001 --classe
 
 ######################4)model fit:
 
+#6 r4.xlarge instances
+#scheduler 4 gb, 12 workers with 10gb each
+
 antares model_fit -model rf -p <name of recipe> -t <name of training data> --region <state of Mexico> --name <name of model> --sample <% of training data to be used> --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
 
 ######################(end)4)model fit:
