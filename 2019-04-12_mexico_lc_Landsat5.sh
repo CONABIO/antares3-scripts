@@ -104,8 +104,9 @@ antares segment --algorithm bis -n <segmentation name> -p <recipe name> -lat 14 
 
 ######################*)ingest training data
 
-#check next commmand with Ixchel
-antares ingest_training <shapefile> --scheme madmex_31 --year <year of training data> --name <name to identify in DB and in processes> --field <name of column of shapefile with classes>
+#for every state
+
+antares ingest_training_from_raster /path/to/file.tif --fraction 0.0001 --classes 31 --scheme madmex_31 --year 2015 --name bits_<state_mexico> --field code
 
 ######################(end)*)ingest training data
 
@@ -115,6 +116,10 @@ antares ingest_training <shapefile> --scheme madmex_31 --year <year of training 
 antares model_fit -model rf -p <name of recipe> -t <name of training data> --region <state of Mexico> --name <name of model> --sample <% of training data to be used> --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
 
 ######################(end)4)model fit:
+
+
+
+
 
 ######################*)ingest validation data
 
