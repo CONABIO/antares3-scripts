@@ -133,7 +133,7 @@ Command execution is done in 158.65846228599548 seconds.
 ######################(end)4)model fit:
 
 
-######################4)model predict:
+######################5)model predict:
 #for every state
 
 #scheduler 4gb, 4 gb each dask worker, 17 dask-workers
@@ -142,10 +142,10 @@ antares model_predict_object -p recipe_mex_L5_9596 -m <name of model per state> 
 #example:
 antares model_predict_object -p recipe_mex_L5_9596 -m model_rf_oaxaca_L5_9596 -s seg_mex_L5_9596 -r Oaxaca --name predict_rf_oaxaca_L5_9596 -sc /shared_volume/scheduler.json
 Command execution is done in 375.819700717926 seconds.
-######################4)model predict:
+######################(end)5)model predict:
 
 
-######################5)db to raster:
+######################6)db to raster:
 
 #use TEMP_DIR=/share_volume/temp so scheduler can merge results
 
@@ -155,7 +155,7 @@ antares db_to_raster -n <name of predict to identify it in DB>  -region <state o
 #example:
 antares db_to_raster -n predict_rf_oaxaca_L5_9596 -region Oaxaca -f predict_rf_oaxaca_L5_9596.tif --resolution 30 -sc /shared_volume/scheduler.json
 Command execution is done in 73.89225602149963 seconds.
-######################(end)5)db to raster:
+######################(end)6)db to raster:
 
 
 ######################*)ingest validation data
