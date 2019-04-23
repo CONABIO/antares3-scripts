@@ -123,7 +123,7 @@ Command execution is done in 1357.3208334445953 seconds.
 #3 r4.2xlarge instances
 #scheduler 4 gb, 12 workers with 10gb each
 
-antares model_fit -model rf -p recipe_mex_L5_9596 -t <name of training data> --region <state of Mexico> --name <name of model> --sample <% of training data to be used> --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
+antares model_fit -model rf -p recipe_mex_L5_9596 -t <name of training data> --region <state of Mexico> --name <name of model per state> --sample <% of training data to be used> --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
 
 #example:
 antares model_fit -model rf -p recipe_mex_L5_9596 -t bits_Oaxaca --region Oaxaca --name model_rf_oaxaca_L5_9596 --sample 1 --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
@@ -135,7 +135,7 @@ Command execution is done in 158.65846228599548 seconds.
 #for every state
 
 #scheduler 4gb, 4 gb each dask worker, 17 dask-workers
-antares model_predict_object -p recipe_mex_L5_9596 -m model_rf_oaxaca_L5_9596 -s seg_mex_L5_9596 -r <state of Mexico> --name <name of predict to identify it in DB> -sc /shared_volume/scheduler.json
+antares model_predict_object -p recipe_mex_L5_9596 -m <name of model per state> -s seg_mex_L5_9596 -r <state of Mexico> --name <name of predict to identify it in DB> -sc /shared_volume/scheduler.json
 
 #example:
 antares model_predict_object -p recipe_mex_L5_9596 -m model_rf_oaxaca_L5_9596 -s seg_mex_L5_9596 -r Oaxaca --name predict_rf_oaxaca_L5_9596 -sc /shared_volume/scheduler.json
