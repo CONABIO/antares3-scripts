@@ -145,6 +145,8 @@ Command execution is done in 375.819700717926 seconds.
 
 ######################5)db to raster:
 
+#use TEMP_DIR=/share_volume/temp so scheduler can merge results
+
 #scheduler 10 gb, 4 gb dask workers, 20 dask-workers
 antares db_to_raster -n <name of predict to identify it in DB>  -region <state of Mexico> -f <name of result> --resolution 30 -sc /shared_volume/scheduler.json
 
