@@ -130,6 +130,9 @@ antares model_fit -model rf -p recipe_mex_L5_9596 -t <name of training data> --r
 #example:
 antares model_fit -model rf -p recipe_mex_L5_9596 -t bits_Oaxaca --region Oaxaca --name model_rf_oaxaca_L5_9596 --sample 1 --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
 Command execution is done in 158.65846228599548 seconds.
+
+#Aprox 1:30 hr for national level 
+
 ######################(end)4)model fit:
 
 
