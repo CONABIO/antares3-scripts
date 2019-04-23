@@ -147,6 +147,8 @@ antares model_predict_object -p recipe_mex_L5_9596 -m <name of model per state> 
 #example:
 antares model_predict_object -p recipe_mex_L5_9596 -m model_rf_oaxaca_L5_9596 -s seg_mex_L5_9596 -r Oaxaca --name predict_rf_oaxaca_L5_9596 -sc /shared_volume/scheduler.json
 Command execution is done in 375.819700717926 seconds.
+
+#Aprox 2:30 - 3:00 hrs for national level
 ######################(end)5)model predict:
 
 
