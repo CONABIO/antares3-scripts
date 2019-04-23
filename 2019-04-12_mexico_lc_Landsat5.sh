@@ -123,7 +123,7 @@ Command execution is done in 1357.3208334445953 seconds.
 #to do the model fit to a national level we use next configuration of instances and scheduler and workers
 
 #5 r4.2xlarge instances
-#scheduler 4 gb, 25 workers with 10gb each
+#scheduler 4 gb, 50 workers with 4gb each
 
 antares model_fit -model rf -p recipe_mex_L5_9596 -t <name of training data> --region <state of Mexico> --name <name of model per state> --sample <% of training data to be used> --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
 
