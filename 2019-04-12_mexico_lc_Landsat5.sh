@@ -105,8 +105,10 @@ Command execution is done in 4803.307151556015 seconds.
 ######################*)ingest training data
 
 #for every state
-#r4.2xlarge instance
-#scheduler 58 gb
+#r4.4xlarge instance
+#scheduler 118 gb
+
+#for Chihuahua state a r4.8xlarge instance with 238 gb for scheduler was used
 
 antares ingest_training_from_raster /path/to/file.tif --fraction 0.0001 --classes 31 --scheme madmex_31 --year 2015 --name bits_<state_mexico> --field class
 
