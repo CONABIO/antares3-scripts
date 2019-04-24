@@ -83,6 +83,8 @@ datacube -v ingest -c ~/.config/madmex/ingestion/srtm_cgiar_mexico.yaml --execut
 
 antares apply_recipe -recipe landsat_madmex_003 -b 1995-01-01 -e 1996-12-31 -lat 14 33 -long -119 -84 --name recipe_mex_L5_9596 -sc /shared_volume/scheduler.json
 
+#Aprox 3 hrs
+
 ######################(end)2)recipe
 
 
@@ -115,6 +117,9 @@ antares ingest_training_from_raster /path/to/file.tif --fraction 0.0001 --classe
 #example:
 antares ingest_training_from_raster Oaxaca_rapideye_2015_31.tif --fraction -1 --classes 31 --scheme madmex_31--year 2015 --name bits_Oaxaca --field class
 Command execution is done in 1357.3208334445953 seconds.
+
+#Aprox 10 hrs for national level 
+
 ######################(end)*)ingest training data
 
 
@@ -162,6 +167,8 @@ antares db_to_raster -n <name of predict to identify it in DB>  -region <state o
 #example:
 antares db_to_raster -n predict_rf_oaxaca_L5_9596 -region Oaxaca -f predict_rf_oaxaca_L5_9596.tif --resolution 30 -sc /shared_volume/scheduler.json
 Command execution is done in 73.89225602149963 seconds.
+
+#Aprox 40 mins for national level
 ######################(end)6)db to raster:
 
 
