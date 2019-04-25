@@ -140,6 +140,4 @@ antares db_to_raster -n land_cover_rf_s1_2_20m_resampled_10m_001_jalisco_from_s3
 
 #not sure how much ram... possibly 29gb in a scheduler of a r4.xlarge instance
 
-antares validate -c land_cover_rf_s1_2_20m_resampled_10m_001_jalisco_from_s3_to_s3_2018 -val bits_interpret -r Jalisco --comment 'validation for Jalisco s2 10m 2018 using gridspec functionality of datacube, bits_interpret as validation data and reading from s3 input images' --log
-
-
+antares validate -c lc_rf_s1_2_20m_resampled_10m_Jalisco_recipe_2017 -val validation_Jalisco -r Jalisco --log --scheduler /shared_volume/scheduler.json --comment 'validation for Jalisco s2 10m 2018 using gridspec functionality of datacube, bits_interpret as validation data and reading from s3 input images' --log
