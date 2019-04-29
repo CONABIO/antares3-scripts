@@ -179,4 +179,15 @@ Command execution is done in 73.89225602149963 seconds.
 ######################(end)*)ingest validation data
 
 
+#after doing workflow of classification some dc tiles were missing for Veracruz, Puebla and Tlaxcala
+#We re-ingested those missing scenes and new recipe was created for each state:
+
+recipe_mex_L5_9596_pue_comp
+
+recipe_mex_L5_9596_tlx_comp
+
+recipe_mex_L5_9596_ver_comp
+
+#new segmentation:
+
 
