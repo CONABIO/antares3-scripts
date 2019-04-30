@@ -190,4 +190,8 @@ recipe_mex_L5_9596_ver_comp
 
 #new segmentation:
 
+seg_mex_L5_9596_pue_comp
 
+seg_mex_L5_9596_tlx_comp
+
+seg_mex_L5_9596_ver_comp
