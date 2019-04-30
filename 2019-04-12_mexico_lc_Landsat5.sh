@@ -203,3 +203,11 @@ model_rf_puebla_L5_9596_comp
 model_rf_tlaxcala_L5_9596_comp
 
 model_rf_veracruz_L5_9596_comp
+
+#new predict:
+
+predict_rf_puebla_L5_9596_comp
+
+predict_rf_tlaxcala_L5_9596_comp
+
+predict_rf_veracruz_L5_9596_comp
