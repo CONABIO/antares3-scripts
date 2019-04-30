@@ -195,3 +195,11 @@ seg_mex_L5_9596_pue_comp
 seg_mex_L5_9596_tlx_comp
 
 seg_mex_L5_9596_ver_comp
+
+#new model:
+
+model_rf_puebla_L5_9596_comp
+
+model_rf_tlaxcala_L5_9596_comp
+
+model_rf_veracruz_L5_9596_comp
