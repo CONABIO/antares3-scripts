@@ -112,10 +112,10 @@ Command execution is done in 4803.307151556015 seconds.
 
 #for Chihuahua state a r4.8xlarge instance with 238 gb for scheduler was used
 
-antares ingest_training_from_raster /path/to/file.tif --fraction 0.0001 --classes 31 --scheme madmex_31 --year 2015 --name bits_<state_mexico> --field class
+antares ingest_training_from_raster /path/to/file.tif --fraction 0.0001 --classes 31 --scheme madmex_31 --year 2015 --name bits_<name of training data> --field class
 
 #example:
-antares ingest_training_from_raster Oaxaca_rapideye_2015_31.tif --fraction -1 --classes 31 --scheme madmex_31--year 2015 --name bits_Oaxaca --field class
+antares ingest_training_from_raster Oaxaca_rapideye_2015_31.tif --fraction -1 --classes 31 --scheme madmex_31--year 2015 --name bits_nacional --field class
 Command execution is done in 1357.3208334445953 seconds.
 
 #Aprox 10 hrs for national level 
@@ -133,7 +133,7 @@ Command execution is done in 1357.3208334445953 seconds.
 antares model_fit -model rf -p recipe_mex_L5_9596 -t <name of training data> --region <state of Mexico> --name <name of model per state> --sample <% of training data to be used> --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
 
 #example:
-antares model_fit -model rf -p recipe_mex_L5_9596 -t bits_Oaxaca --region Oaxaca --name model_rf_oaxaca_L5_9596 --sample 1 --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
+antares model_fit -model rf -p recipe_mex_L5_9596 -t bits_nacional --region Oaxaca --name model_rf_oaxaca_L5_9596 --sample 1 --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
 Command execution is done in 158.65846228599548 seconds.
 
 #Aprox 1:30 hr for national level 
@@ -211,3 +211,13 @@ predict_rf_puebla_L5_9596_comp
 predict_rf_tlaxcala_L5_9596_comp
 
 predict_rf_veracruz_L5_9596_comp
+
+
+#We detect some change of classes between contiguous states of Mexico, therefore we decided fit a model to all Mexico:
+
+#5 r4.2xlarge instances
+#scheduler 4 gb, 34 workers with 4gb each
+
+antares model_fit -model rf -p recipe_mex_L5_9596 -t bits_nacional -lat 14 33 -long -119 -84 --name model_rf_mexico_L5_9596 --sample 1 --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
+
+
