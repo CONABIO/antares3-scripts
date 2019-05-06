@@ -216,7 +216,7 @@ predict_rf_veracruz_L5_9596_comp
 #We detect some change of classes between contiguous states of Mexico, therefore we decided fit a model to all Mexico:
 
 #5 r4.2xlarge instances
-#scheduler 4 gb, 34 workers with 4gb each
+#scheduler 57 gb, 34 workers with 2gb each
 
 antares model_fit -model rf -p recipe_mex_L5_9596 -t bits_nacional -lat 14 33 -long -119 -84 --name model_rf_mexico_L5_9596 --sample 1 --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
 
