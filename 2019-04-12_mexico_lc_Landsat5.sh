@@ -231,6 +231,6 @@ Command execution is done in 6464.057304382324 seconds.
 # Db to raster for every state
 
 #5 r4.2xlarge instances
-#scheduler 10 gb, 29 workers with 2gb each
+#scheduler 10 gb, 34 workers with 2gb each
 
 antares db_to_raster -n predict_rf_mexico_L5_9596 -region Jalisco -f predict_rf_jalisco_modelo_nacional_L5_9596.tif --resolution 30 -sc /shared_volume/scheduler.json
