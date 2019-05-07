@@ -219,13 +219,16 @@ predict_rf_veracruz_L5_9596_comp
 #scheduler 10 gb, 29 workers with 2gb each
 
 antares model_fit -model rf -p recipe_mex_L5_9596 -t bits_nacional -lat 14 33 -long -119 -84 --name model_rf_mexico_L5_9596 --sample 1 --remove-outliers -extra n_estimators=60 -sc /shared_volume/scheduler.json
-
-
 Command execution is done in 4129.5213894844055 seconds.
+
+#5 r4.2xlarge instances
+#scheduler 4 gb, 34 workers with 4gb each
+
+antares model_predict_object -p recipe_mex_L5_9596 -m model_rf_mexico_L5_9596 -s seg_mex_L5_9596 -lat 14 33 -long -119 -84 --name predict_rf_mexico_L5_9596 -sc /shared_volume/scheduler.json
+Command execution is done in 6464.057304382324 seconds.
 
 
 # Db to raster for every state
-
 
 #5 r4.2xlarge instances
 #scheduler 10 gb, 29 workers with 2gb each
