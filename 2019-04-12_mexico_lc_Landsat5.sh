@@ -161,7 +161,7 @@ Command execution is done in 375.819700717926 seconds.
 
 #use TEMP_DIR=/share_volume/temp so scheduler can merge results
 
-#scheduler 10 gb, 4 gb dask workers, 20 dask-workers
+#scheduler 10 gb, 2 gb dask workers, 20 dask-workers
 antares db_to_raster -n <name of predict to identify it in DB>  -region <state of Mexico> -f <name of result> --resolution 30 -sc /shared_volume/scheduler.json
 
 #example:
@@ -222,3 +222,12 @@ antares model_fit -model rf -p recipe_mex_L5_9596 -t bits_nacional -lat 14 33 -l
 
 
 Command execution is done in 4129.5213894844055 seconds.
+
+
+# Db to raster for every state
+
+
+#5 r4.2xlarge instances
+#scheduler 10 gb, 29 workers with 2gb each
+
+antares db_to_raster -n predict_rf_mexico_L5_9596 -region Jalisco -f predict_rf_jalisco_modelo_nacional_L5_9596.tif --resolution 30 -sc /shared_volume/scheduler.json
