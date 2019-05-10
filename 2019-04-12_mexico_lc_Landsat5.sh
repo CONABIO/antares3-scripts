@@ -127,6 +127,8 @@ Command execution is done in 1357.3208334445953 seconds.
 
 #to do the model fit to a national level we use next configuration of instances and scheduler and workers
 
+#300, 000 aprox training points in every state
+
 #5 r4.2xlarge instances
 #scheduler 4 gb, 34 workers with 4gb each
 
@@ -214,6 +216,7 @@ predict_rf_veracruz_L5_9596_comp
 
 
 #We detect some change of classes between contiguous states of Mexico, therefore we decided fit a model to all Mexico:
+#Using same training data than before: 300, 000 aprox training points in every state
 
 #5 r4.2xlarge instances
 #scheduler 10 gb, 29 workers with 2gb each
