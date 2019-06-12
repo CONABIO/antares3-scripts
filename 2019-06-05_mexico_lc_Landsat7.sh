@@ -50,8 +50,8 @@ datacube -v ingest -c ~/.config/madmex/ingestion/ls7_espa_mexico.yaml --executor
 
 #30 r4.2xlarge instances. Scheduler 10 gb and 29 workers 57 gb
 
-antares apply_recipe -recipe landsat_madmex_003 -b 2014-01-01 -e 2015-12-31 -lat 14 33 -long -119 -84 --name recipe_mex_L5_1415 -sc /shared_volume/scheduler.json
+antares apply_recipe -recipe landsat_madmex_003 -b 2014-01-01 -e 2015-12-31 -lat 14 33 -long -119 -84 --name recipe_mex_L7_1415 -sc /shared_volume/scheduler.json
 
-#Aprox  hrs
+#Aprox 2.5 hrs
 
 ######################(end)2)recipe
