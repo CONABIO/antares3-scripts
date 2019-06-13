@@ -67,6 +67,7 @@ antares apply_recipe -recipe landsat_madmex_003 -b 2014-01-01 -e 2015-12-31 -lat
 #scheduler 4 gb and workers 12 gb each
 
 antares segment --algorithm bis -n seg_mex_L7_1415 -p recipe_mex_L7_1415 -lat 14 33 -long -119 -84 -b ndvi_mean --datasource landsat7 --year 2014_2015 -extra t=30 s=0.5 c=0.7 -sc /shared_volume/scheduler.json
+Command execution is done in 3832.5341403484344 seconds.
 
 ######################(end)3)segmentation
 
