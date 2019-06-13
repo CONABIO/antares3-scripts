@@ -55,3 +55,20 @@ antares apply_recipe -recipe landsat_madmex_003 -b 2014-01-01 -e 2015-12-31 -lat
 #Aprox 2.5 hrs
 
 ######################(end)2)recipe
+
+######################3)segmentation:
+#modify .antares entries SEGMENTATION_BUCKET and TEMP_DIR for bucket and directory that will have temporary segmentation results
+#we are using: segmentation-antares3-results bucket
+#check if BIS license is functional 
+#directory that will have temporary segmentation results is recommended to be in /home/madmex_user instead of
+#/shared_volume/temp to avoid bottlenecks of I/O of every worker writing to a unique location. See:
+#https://github.com/CONABIO/antares3/blob/develop/madmex/util/s3.py#L176 then use TEMP_DIR=/home/madmex_user
+
+#scheduler 4 gb and workers 12 gb each
+
+antares segment --algorithm bis -n seg_mex_L7_1415 -p recipe_mex_L7_1415 -lat 14 33 -long -119 -84 -b ndvi_mean --datasource landsat7 --year 2014_2015 -extra t=30 s=0.5 c=0.7 -sc /shared_volume/scheduler.json
+
+######################(end)3)segmentation
+
+
+
