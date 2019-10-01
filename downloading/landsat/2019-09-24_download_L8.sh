@@ -12,5 +12,5 @@ antares download_order --order_ids espa-conabio.madmex@gmail.com-09252019-180347
 antares download_order --order_ids espa-conabio.madmex@gmail.com-09252019-185334-420
 
 
-# por ejecutar
 antares create_order --region 'mex_simple'  --start-date '2017-01-01' --end-date '2018-12-31' --max-cloud-cover 30 --landsat 8
+# order: espa-conabio.madmex@gmail.com-10012019-115837-913
