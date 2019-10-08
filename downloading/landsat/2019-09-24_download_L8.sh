@@ -21,4 +21,7 @@ Crear ruta /LUSTRE/MADMEX/imagenes/landsat/L8/2017_2018
 antares download_order -order_ids espa-conabio.madmex@gmail.com-10012019-115837-913
 
 
-
+5. Descarga Landsat 7 2014-2015
+Cambiar ruta de TEMP_DIR en `.antares` con: /LUSTRE/MADMEX/imagenes/landsat/L7/2014_2015/
+Crear ruta /LUSTRE/MADMEX/imagenes/landsat/L7/2014_2015/
+antares download_order -order_ids espa-conabio.madmex@gmail.com-10032019-232110-887
