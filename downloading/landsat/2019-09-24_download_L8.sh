@@ -18,7 +18,3 @@ antares create_order --region 'mex_simple'  --start-date '2017-01-01' --end-date
 
 
 
-#la siguente línea de qué periodo y sensor corresponde?
-antares download_order --order_ids espa-conabio.madmex@gmail.com-09252019-180347-664
-
-
