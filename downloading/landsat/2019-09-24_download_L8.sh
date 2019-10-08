@@ -3,7 +3,7 @@
 
 1. Landsat 8 2014-2015
 antares create_order --region 'mex_simple'  --start-date '2014-01-01' --end-date '2015-12-31' --max-cloud-cover 30 --landsat 8 
-#order id:  ? , total escenas: ?
+#order id:  ? , total escenas: 3965
 antares download_order --order_ids espa-conabio.madmex@gmail.com-09252019-185334-420
 #3965 escenas descargadas en: /LUSTRE/MADMEX/imagenes/landsat/L8/2014_2015
 
