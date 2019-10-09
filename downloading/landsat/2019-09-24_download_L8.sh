@@ -9,7 +9,7 @@ antares download_order --order_ids espa-conabio.madmex@gmail.com-09252019-185334
 
 2. Landsat 7 2014-2015
 antares create_order --region 'mex_simple'  --start-date '2014-01-01' --end-date '2015-12-31' --max-cloud-cover 10 --landsat 7 
-#order id: espa-conabio.madmex@gmail.com-10032019-232110-887 , total escenas: ?
+#order id: espa-conabio.madmex@gmail.com-10032019-232110-887 , total escenas: 2447
 
 3. Landsat 8 2017-2018
 antares create_order --region 'mex_simple'  --start-date '2017-01-01' --end-date '2018-12-31' --max-cloud-cover 30 --landsat 8
