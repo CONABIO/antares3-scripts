@@ -20,19 +20,22 @@ sentinelsat -u conabio_1 -p madmex... -g mex_full.geojson --sentinel 2 --url htt
 sentinelsat -u conabio_1 -p madmex... -g mex_full.geojson --sentinel 2 --url https://scihub.copernicus.eu/apihub --producttype S2MSI1C -s 20181027 -e 20181103 --cloud 25 -d --path /LUSTRE/MADMEX/imagenes/sentinel2_escenas/2018/
 
 #second batch
-#found 684 scenes
+#downloaded 684 scenes
 sentinelsat -u conabio_2 -p madmex... -g mex_full.geojson --sentinel 2 --url https://scihub.copernicus.eu/dhus --producttype S2MSI1C -s 20181104 -e 20181111 --cloud 25 -d --path /LUSTRE/MADMEX/imagenes/sentinel2_escenas/2018/
 #downloaded 554 scenes
 sentinelsat -u conabio_2 -p madmex... -g mex_full.geojson --sentinel 2 --url https://scihub.copernicus.eu/dhus --producttype S2MSI1C -s 20181112 -e 20181120 --cloud 25 -d --path /LUSTRE/MADMEX/imagenes/sentinel2_escenas/2018/
 #downloaded 464 scenes
 sentinelsat -u conabio_3 -p madmex... -g mex_full.geojson --sentinel 2 --url https://scihub.copernicus.eu/apihub --producttype S2MSI1C -s 20181121 -e 20181129 --cloud 25 -d --path /LUSTRE/MADMEX/imagenes/sentinel2_escenas/2018/
-#found 590 scenes
+#downloaded 590 scenes
 sentinelsat -u conabio_3 -p madmex... -g mex_full.geojson --sentinel 2 --url https://scihub.copernicus.eu/apihub --producttype S2MSI1C -s 20181130 -e 20181207 --cloud 25 -d --path /LUSTRE/MADMEX/imagenes/sentinel2_escenas/2018/
 
 
 #third batch
+#found 505 scenes
 sentinelsat -u madmex -p madmex... -g mex_full.geojson --sentinel 2 --url https://scihub.copernicus.eu/dhus --producttype S2MSI1C -s 20181208 -e 20181216 --cloud 25 -d --path /LUSTRE/MADMEX/imagenes/sentinel2_escenas/2018/
+#found 653 scenes
 sentinelsat -u madmex -p madmex... -g mex_full.geojson --sentinel 2 --url https://scihub.copernicus.eu/dhus --producttype S2MSI1C -s 20181217 -e 20181225 --cloud 25 -d --path /LUSTRE/MADMEX/imagenes/sentinel2_escenas/2018/
+#found 353 scenes
 sentinelsat -u madmex -p madmex... -g mex_full.geojson --sentinel 2 --url https://scihub.copernicus.eu/apihub --producttype S2MSI1C -s 20181226 -e 20181231 --cloud 25 -d --path /LUSTRE/MADMEX/imagenes/sentinel2_escenas/2018/
 
 
