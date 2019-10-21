@@ -31,11 +31,11 @@ sentinelsat -u conabio_3 -p madmex... -g mex_full.geojson --sentinel 2 --url htt
 
 
 #third batch
-#found 505 scenes
+#downloaded 505 scenes
 sentinelsat -u madmex -p madmex... -g mex_full.geojson --sentinel 2 --url https://scihub.copernicus.eu/dhus --producttype S2MSI1C -s 20181208 -e 20181216 --cloud 25 -d --path /LUSTRE/MADMEX/imagenes/sentinel2_escenas/2018/
 #found 653 scenes
 sentinelsat -u madmex -p madmex... -g mex_full.geojson --sentinel 2 --url https://scihub.copernicus.eu/dhus --producttype S2MSI1C -s 20181217 -e 20181225 --cloud 25 -d --path /LUSTRE/MADMEX/imagenes/sentinel2_escenas/2018/
-#found 353 scenes
+#downloaded 353 scenes
 sentinelsat -u madmex -p madmex... -g mex_full.geojson --sentinel 2 --url https://scihub.copernicus.eu/apihub --producttype S2MSI1C -s 20181226 -e 20181231 --cloud 25 -d --path /LUSTRE/MADMEX/imagenes/sentinel2_escenas/2018/
 
 
