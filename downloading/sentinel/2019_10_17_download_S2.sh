@@ -3,7 +3,7 @@
 
 #next line to count number of scenes and size
 sentinelsat -u conabio_1 -p madmex... -g mex_full.geojson --sentinel 2 --url https://scihub.copernicus.eu/dhus --producttype S2MSI1C -s 20181001 -e 20181231 --cloud 25 --footprints --path /LUSTRE/MADMEX/imagenes/sentinel2_escenas/2018/
-7001 scenes found with a total size of 3242.47 GB
+6314 scenes found with a total size of 3242.47 GB
 
 # Ruta de descarga: /LUSTRE/MADMEX/imagenes/sentinel2_escenas/2018/
 #execute next lines in: /LUSTRE/MADMEX/shapefiles/mexico_geojson_simple
